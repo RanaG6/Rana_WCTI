@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Canvas Drawing</title>
+</head>
+<body>
+<h1>Canvas Drawing</h1>
+<canvas id="myCanvas" width="800" height="600" style="border:1px solid #b16565;"></canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "pink";
+    ctx.fillRect(50, 50, 100, 100);
+
+    ctx.beginPath();
+    ctx.arc(100, 100, 50, 0, 2 * Math.PI);
+    ctx.stroke();
+</script>
+</body>
+</html>
