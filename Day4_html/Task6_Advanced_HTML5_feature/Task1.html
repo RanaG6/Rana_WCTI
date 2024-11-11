@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Color Selector</title>
+  <style>
+    body {
+      transition: background-color 0.5s ease;
+    }
+    .color-button {
+      padding: 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Select the backgrounf Color</h1>
+    <button class="color-button" style="background-color: #f370b3;" onclick="setColor('#3498db')">Pink</button>
+    <button class="color-button" style="background-color: #b3e594;" onclick="setColor('#2ecc71')">Green</button>
+    <button class="color-button" style="background-color: #943ce753;" onclick="setColor('#e74c3c')">Light Purple</button>
+    <button class="color-button" style="background-color: #fff200d6;" onclick="setColor('#e74c3c')">Yellow</button>
+<script>
+ 
+  function setColor(color) {
+    document.body.style.backgroundColor = color;
+    localStorage.setItem('bgColor', color);
+  }
+
+  window.onload = function() {
+    const savedColor = localStorage.getItem('bgColor');
+    if (savedColor) {
+      document.body.style.backgroundColor = savedColor;
+    }
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Form</title>
+<body>
+        <h1>User Information</h1>
+        <form onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+    
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+    
+            <input type="submit" value="Submit">
+        </form>
+</body>
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+
+            // Email validation
+            if (!email) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            if (!isValidEmail(email)) {
+                alert("Invalid email format.");
+                return false;
+            }
+
+            // Phone number validation
+            if (!phone) {
+                alert("Please enter a phone number.");
+                return false;
+            }
+            if (!isValidPhone(phone)) {
+                alert("Invalid phone number format.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function isValidEmail(email) {
+            // Simple email validation using regular expression
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            // Simple phone number validation using regular expression (adjust as needed)
+            var phoneRegex = /^\d{10}$/; // 10 digits for example
+            return phoneRegex.test(phone);
+        }
+    </script>
+</head>
+</html>

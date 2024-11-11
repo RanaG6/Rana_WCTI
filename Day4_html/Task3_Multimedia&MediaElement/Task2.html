@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Webpage</title>
+    <style>
+        /* Style for custom controls */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .controls button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My First Webpage</h1>
+        <h2>My name is Lao Rana.</h2>
+    </header>
+
+    <section>
+        <p>I'm a junior majoring in Information Technology.</p>
+        <p>My favorite hobby is reading.</p>
+    </section>
+    
+    <section>
+        <h3>The reasons I enjoy reading so much include:</h3>
+        <ul>
+           <li>It expands my vocabulary.</li>
+           <li>It helps me escape from reality.</li>
+           <li>It helps me develop critical thinking skills.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Learn More About My Hobby</h3>
+        <div>
+            <h4>Interesting Reading Material Video</h4>
+            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/uj-fZfscY9Y?start=5091" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+            encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <div class="controls">
+                <button onclick="playVideo()">Play</button>
+                <button onclick="pauseVideo()">Pause</button>
+                <button onclick="muteVideo()">Mute</button>
+                <button onclick="unmuteVideo()">Unmute</button>
+            </div>
+        </div>
+
+        <div>
+            <h4>Sample of the Music</h4>
+            <audio id="audio" controls>
+                <source src="jazz.mp3" type="audio/mpeg">
+            </audio>
+
+    
+            <div class="controls">
+                <button onclick="playAudio()">Play</button>
+                <button onclick="pauseAudio()">Pause</button>
+                <label>Volume:</label>
+                <input type="range" min="0" max="1" step="0.1" onchange="setAudioVolume(this.value)">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact me at: ranalao2601@gmail.com</p>
+    </footer>
+
+    <script>
+        function playVideo() {
+            let video = document.getElementById('video');
+            video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }
+
+        function pauseVideo() {
+            let video = document.getElementById('video');
+            video.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+
+        function muteVideo() {
+            let video = document.getElementById('video');
+            video.contentWindow.postMessage('{"event":"command","func":"mute","args":""}', '*');
+        }
+
+        function unmuteVideo() {
+            let video = document.getElementById('video');
+            video.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+        }
+
+        // Custom controls for audio
+        const audio = document.getElementById("audio");
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function setAudioVolume(volume) {
+            audio.volume = volume;
+        }
+    </script>
+
+</body>
+</html>
